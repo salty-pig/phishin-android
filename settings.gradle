@@ -1,1 +1,3 @@
-include ':phishin-library'
+include ':phishin'
+
+rootProject.name = 'phishin-parent'
