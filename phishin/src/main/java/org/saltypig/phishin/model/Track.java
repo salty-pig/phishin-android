@@ -14,7 +14,7 @@ public class Track {
     @SerializedName("show_date")
     private String showDate;
 
-    private int set;
+    private String set;
     private int position;
 
     @SerializedName("likes_count")
@@ -63,11 +63,11 @@ public class Track {
         this.showDate = showDate;
     }
 
-    public int getSet() {
+    public String getSet() {
         return set;
     }
 
-    public void setSet(int set) {
+    public void setSet(String set) {
         this.set = set;
     }
 
