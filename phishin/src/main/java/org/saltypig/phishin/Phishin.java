@@ -10,8 +10,12 @@ public final class Phishin {
     private Phishin() {
     }
 
-    public static void songs(Callback<List<Song>> callback) {
+    public static void songs(PhishinCallback<List<Song>> callback) {
         new SongsService().retrieveSongs(callback);
+    }
+
+    public static void songs(String id, PhishinCallback<Song> callback) {
+        new SongsService().retrieveSongs(id, callback);
     }
 
 }

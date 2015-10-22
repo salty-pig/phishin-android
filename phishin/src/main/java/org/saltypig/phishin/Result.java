@@ -2,9 +2,7 @@ package org.saltypig.phishin;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class Result<T> {
+public abstract class Result {
 
     private boolean success;
 
@@ -15,8 +13,6 @@ public class Result<T> {
     private int totalPages;
 
     private int page;
-
-    private List<T> data;
 
     public boolean isSuccess() {
         return success;
@@ -48,14 +44,6 @@ public class Result<T> {
 
     public void setPage(int page) {
         this.page = page;
-    }
-
-    public List<T> getData() {
-        return data;
-    }
-
-    public void setData(List<T> data) {
-        this.data = data;
     }
 
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @param <T> The data type of the operation
  */
-public interface Callback<T> extends Serializable {
+public interface PhishinCallback<T> extends Serializable {
 
     /**
      * Called when operation completes with success.
