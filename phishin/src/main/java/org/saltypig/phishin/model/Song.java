@@ -2,9 +2,11 @@ package org.saltypig.phishin.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Song {
 
-    private Long id;
+    private long id;
     private String title;
 
     @SerializedName("alias_for")
@@ -15,11 +17,13 @@ public class Song {
 
     private String slug;
 
-    public Long getId() {
+    private List<Track> tracks;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -54,4 +58,29 @@ public class Song {
     public void setSlug(String slug) {
         this.slug = slug;
     }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Song song = (Song) o;
+
+        return id == song.id;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (id ^ (id >>> 32));
+    }
+
 }
