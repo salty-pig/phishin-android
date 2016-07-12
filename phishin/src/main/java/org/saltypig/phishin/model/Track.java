@@ -2,26 +2,41 @@ package org.saltypig.phishin.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+import java.util.List;
+
 public class Track {
 
     private long id;
-    private String title;
-    private long duration;
 
     @SerializedName("show_id")
     private long showId;
 
     @SerializedName("show_date")
-    private String showDate;
+    private Date showDate;
 
-    private String set;
+    private String title;
+
     private int position;
+
+    private long duration;
+
+    private int setId;
+
+    private String setName;
 
     @SerializedName("likes_count")
     private long likes;
 
     private String slug;
+
+    private List<String> tags;
+
     private String mp3;
+
+    private List<Long> songIds;
+
+    private Date updatedAt;
 
     public long getId() {
         return id;
@@ -29,22 +44,6 @@ public class Track {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public long getDuration() {
-        return duration;
-    }
-
-    public void setDuration(long duration) {
-        this.duration = duration;
     }
 
     public long getShowId() {
@@ -55,20 +54,20 @@ public class Track {
         this.showId = showId;
     }
 
-    public String getShowDate() {
+    public Date getShowDate() {
         return showDate;
     }
 
-    public void setShowDate(String showDate) {
+    public void setShowDate(Date showDate) {
         this.showDate = showDate;
     }
 
-    public String getSet() {
-        return set;
+    public String getTitle() {
+        return title;
     }
 
-    public void setSet(String set) {
-        this.set = set;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getPosition() {
@@ -77,6 +76,30 @@ public class Track {
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
+    }
+
+    public int getSetId() {
+        return setId;
+    }
+
+    public void setSetId(int setId) {
+        this.setId = setId;
+    }
+
+    public String getSetName() {
+        return setName;
+    }
+
+    public void setSetName(String setName) {
+        this.setName = setName;
     }
 
     public long getLikes() {
@@ -95,12 +118,36 @@ public class Track {
         this.slug = slug;
     }
 
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
     public String getMp3() {
         return mp3;
     }
 
     public void setMp3(String mp3) {
         this.mp3 = mp3;
+    }
+
+    public List<Long> getSongIds() {
+        return songIds;
+    }
+
+    public void setSongIds(List<Long> songIds) {
+        this.songIds = songIds;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override

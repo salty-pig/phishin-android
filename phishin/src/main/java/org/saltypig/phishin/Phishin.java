@@ -9,20 +9,7 @@ import org.saltypig.phishin.service.TracksService;
 
 import java.util.List;
 
-import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
 public final class Phishin {
-
-    private static Retrofit retrofit;
-
-    static {
-        retrofit = new Retrofit.Builder()
-                .baseUrl("http://phish.in/api/v1")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-    }
 
     private Phishin() {
     }
@@ -32,7 +19,7 @@ public final class Phishin {
     }
 
     public static void songs(String id, PhishinCallback<Song> callback) {
-        new SongsService().retrieveSongs(id, callback);
+        new SongsService().retrieveSong(id, callback);
     }
 
     public static void shows(PhishinCallback<List<Show>> callback) {
@@ -40,12 +27,15 @@ public final class Phishin {
     }
 
     public static void shows(String id, PhishinCallback<Show> callback) {
-        new ShowsService().retrieveShows(id, callback);
+        new ShowsService().retrieveShow(id, callback);
     }
 
-    public static void tracks(Callback<Track> callback) {
-        TracksService service = retrofit.create(TracksService.class);
-        service.tracks().enqueue(callback);
+    public static void tracks(PhishinCallback<List<Track>> callback) {
+        new TracksService().retrieveTracks(callback);
+    }
+
+    public static void track(String id, PhishinCallback<Track> callback) {
+        new TracksService().retrieveTrack(id, callback);
     }
 
 }

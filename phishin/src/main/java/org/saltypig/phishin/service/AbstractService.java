@@ -3,6 +3,7 @@ package org.saltypig.phishin.service;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.saltypig.phishin.PhishinCallback;
 import org.saltypig.phishin.ResultCollection;
@@ -22,19 +23,27 @@ import okhttp3.Response;
 public abstract class AbstractService<T> {
 
     private static final String TAG = AbstractService.class.getName();
-    private static final Gson GSON = new Gson();
+    private static final Gson GSON;
     protected static final String PHISH = "http://phish.in/api/v1";
 
     private final OkHttpClient client = new OkHttpClient();
+
+    static {
+        GsonBuilder gsonBuilder = new GsonBuilder()
+                .setDateFormat("yyyy-MM-dd");
+        GSON = gsonBuilder.create();
+    }
+
+    protected abstract String getEndpoint();
 
     protected abstract Type getDataType();
 
     protected abstract Type getCollectionDataType();
 
-    void requestCollectionData(final String url, final PhishinCallback<List<T>> callback) {
+    void requestCollectionData(final PhishinCallback<List<T>> callback) {
 
         final Request request = new Request.Builder()
-                .url(url)
+                .url(PHISH + getEndpoint())
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -61,10 +70,10 @@ public abstract class AbstractService<T> {
 
     }
 
-    void requestData(final String url, final PhishinCallback<T> callback) {
+    void requestData(final String id, final PhishinCallback<T> callback) {
 
         final Request request = new Request.Builder()
-                .url(url)
+                .url(PHISH + getEndpoint() + "/" + id)
                 .build();
 
         client.newCall(request).enqueue(new Callback() {

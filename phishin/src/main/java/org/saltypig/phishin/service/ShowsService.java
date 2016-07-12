@@ -12,32 +12,29 @@ import java.util.List;
 
 public class ShowsService extends AbstractService<Show> {
 
-    private static String endpoint = "/shows";
+    @Override
+    public String getEndpoint() {
+        return "/shows";
+    }
 
     @Override
     protected Type getDataType() {
-        return new TypeToken<ResultData<Show>>() {}.getType();
+        return new TypeToken<ResultData<Show>>() {
+        }.getType();
     }
 
     @Override
     protected Type getCollectionDataType() {
-        return new TypeToken<ResultCollection<Show>>() {}.getType();
+        return new TypeToken<ResultCollection<Show>>() {
+        }.getType();
     }
 
     public void retrieveShows(PhishinCallback<List<Show>> callback) {
-        StringBuffer url = new StringBuffer(PHISH);
-        url.append(endpoint);
-
-        requestCollectionData(url.toString(), callback);
+        requestCollectionData(callback);
     }
 
-    public void retrieveShows(String id, PhishinCallback<Show> callback) {
-        StringBuffer url = new StringBuffer(PHISH);
-        url.append(endpoint);
-        url.append("/");
-        url.append(id);
-
-        requestData(url.toString(), callback);
+    public void retrieveShow(String id, PhishinCallback<Show> callback) {
+        requestData(id, callback);
     }
 
 }

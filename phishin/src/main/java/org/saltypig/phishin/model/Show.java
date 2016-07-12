@@ -2,12 +2,13 @@ package org.saltypig.phishin.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
 import java.util.List;
 
 public class Show {
 
     private long id;
-    private String data;
+    private Date date;
     private long duration;
     private boolean incomplete;
     private boolean missing;
@@ -35,12 +36,12 @@ public class Show {
         this.id = id;
     }
 
-    public String getData() {
-        return data;
+    public Date getDate() {
+        return date;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public long getDuration() {
