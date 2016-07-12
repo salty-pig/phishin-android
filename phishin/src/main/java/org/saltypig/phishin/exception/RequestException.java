@@ -1,6 +1,6 @@
 package org.saltypig.phishin.exception;
 
-import com.squareup.okhttp.Response;
+import okhttp3.Response;
 
 public class RequestException extends Exception {
 
@@ -9,7 +9,7 @@ public class RequestException extends Exception {
     private final String message;
 
     public RequestException(Response response) {
-        this(response.code(), response.request().urlString(), response.message());
+        this(response.code(), response.request().url().toString(), response.message());
     }
 
     public RequestException(int code, String url, String message) {
